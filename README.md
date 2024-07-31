@@ -1,3 +1,5 @@
+![GitHub action workflow status](https://github.com/AgorastisMesaio/simple-go-webserver/actions/workflows/docker-publish.yml/badge.svg)
+
 # Simple Go Web Server
 
 This is a simple web server written in Go. The purpose of this project is to demonstrate how to create a Docker container for a Go application.
