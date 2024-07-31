@@ -1,7 +1,8 @@
 // main.go
 // Simple Go Web Server
 //
-// This program implements a simple web server that responds with a "Hello, World!" message.
+// This program implements a simple web server that responds with an HTML page containing a "Hello, World!" message
+// and a button that links to your GitHub account.
 //
 // Usage:
 //
@@ -22,9 +23,54 @@ import (
     "net/http"
 )
 
-// helloHandler handles HTTP requests and responds with a "Hello, World!" message.
+// helloHandler handles HTTP requests and responds with an HTML page containing a "Hello, World!" message
+// and a button linking to your GitHub profile.
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello, World!")
+    htmlContent := `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello, World!</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f4f4f4;
+            }
+            h1 {
+                color: #333;
+            }
+            .button {
+                padding: 10px 20px;
+                font-size: 16px;
+                color: white;
+                background-color: #007bff;
+                border: none;
+                border-radius: 5px;
+                text-decoration: none;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello, World!</h1>
+        <a href="https://github.com/AgorastisMesaio" class="button">Visit My GitHub</a>
+    </body>
+    </html>`
+    
+    w.Header().Set("Content-Type", "text/html")
+    fmt.Fprint(w, htmlContent)
 }
 
 // main is the entry point for the application.

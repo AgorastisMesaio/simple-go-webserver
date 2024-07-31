@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install any required Go dependencies
-RUN go mod init example.com/m
+RUN go mod tidy
 
 # Build the Go application
 RUN go build -o main .
